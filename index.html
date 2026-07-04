@@ -91,7 +91,27 @@
   .nav-links a:hover{opacity:1}
   .nav-cta{background:var(--copper);color:#fff;padding:11px 20px;border-radius:8px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .2s}
   .nav-cta:hover{background:var(--copper-lt);transform:translateY(-1px)}
-  @media(max-width:860px){.nav-links{display:none}}
+  .nav-right{display:flex;align-items:center;gap:12px}
+  /* hamburger */
+  .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:46px;height:46px;background:transparent;border:1px solid rgba(246,240,230,.3);border-radius:10px;cursor:pointer;padding:0;flex:none}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--cream);margin:0 auto;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s}
+  .hamburger.open{border-color:var(--copper)}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  /* mobile menu panel */
+  .mobile-menu{display:none;flex-direction:column;background:rgba(14,39,57,.99);border-top:1px solid rgba(226,176,112,.22);max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.16,1,.3,1)}
+  .mobile-menu.open{max-height:420px}
+  .mobile-menu a{color:var(--cream);padding:16px 26px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:16px;border-bottom:1px solid rgba(246,240,230,.09);transition:background .2s,color .2s}
+  .mobile-menu a:hover,.mobile-menu a:active{background:rgba(192,115,56,.14);color:var(--brass)}
+  .mobile-menu a.mm-call{background:var(--copper);color:#fff;text-align:center;border-bottom:none;display:flex;align-items:center;justify-content:center;gap:9px}
+  .mobile-menu a.mm-call svg{width:18px;height:18px}
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .hamburger{display:flex}
+    .mobile-menu{display:flex}
+  }
+  @media(max-width:430px){ .nav-cta{display:none} }
 
   /* ---------- HERO (image-dominant, minimal text) ---------- */
   .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
@@ -280,11 +300,26 @@
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="nav-cta" href="tel:+15073546178">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      (507) 354-6178
-    </a>
+    <div class="nav-right">
+      <a class="nav-cta" href="tel:+15073546178">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (507) 354-6178
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a class="mm-call" href="tel:+15073546178">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call (507) 354-6178
+    </a>
+  </nav>
 </header>
 
 <!-- ============ HERO ============ -->
@@ -607,6 +642,21 @@
   var pars = [].slice.call(document.querySelectorAll('[data-par]'));
   var counted = false;
 
+  // Hamburger / mobile menu
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  function closeMenu(){
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+  }
+  hamburger.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+
   // Reveal on scroll
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -649,6 +699,7 @@
       var past = y > heroH - 90;
       nav.classList.toggle('show', past);
       callbar.classList.toggle('show', past);
+      if(!past) closeMenu();
       // hero parallax
       if(y < heroH) heroImg.style.transform = 'translateY('+(y*0.35)+'px) scale(1.06)';
       // element parallax
